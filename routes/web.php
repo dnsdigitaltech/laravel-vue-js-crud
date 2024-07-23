@@ -24,7 +24,8 @@ Route::any('/example', function(){
 
 Route::get('/add-estudante', [StudentController::class, 'create']);
 
-Route::get('/new', [App\Http\Controllers\TestController::class, 'controllerMethod']);
+Route::post('/save-student', [StudentController::class, 'store']);
+
 
 Auth::routes();
 

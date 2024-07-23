@@ -7,7 +7,7 @@
 .el-card__body{
     padding: 10px;
 }
-el-botton{
+.el-button--success{
     color: #fff !important;
     background-color: #02a145 !important;
     border-color: #02a145 !important;

@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
         <el-card class="box-card">
             <div slot="header" class="clearfix">
                 <el-page-header @back="goBack" :content="`Categoria - ${scope}`">
@@ -27,7 +27,7 @@
                     </el-row>
                     <el-row :gutter="10">
                         <el-form-item>
-                            <el-botton type="success" @click="saveForm(`studentForm`)">Salvar estudante</el-botton>
+                            <el-button type="success" @click="saveForm(`studentForm`)">Salvar estudante</el-button>
                         </el-form-item>
                     </el-row>
                 </el-form>
@@ -37,10 +37,11 @@
 </template>
 
 <script>
-import { message } from 'laravel-mix/src/Log';
-
     export default {
         name: 'student-form-component',
+        props: {
+            scope: String
+        },
         mounted() {
             console.log('Component mounted.')
         },
@@ -62,7 +63,11 @@ import { message } from 'laravel-mix/src/Log';
                 window.location.href = "/students"
             },
             saveForm(formName) {
-
+                this.$refs[formName].validate( (valid) => {
+                    if(valid){
+                        this.$store.dispatch('saveStudent', this.model)
+                    }
+                })
             }
         }
     }
