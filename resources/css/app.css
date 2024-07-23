@@ -1,0 +1,16 @@
+.el-page-header {
+    display: flex;
+    line-height: 24px;
+    padding: 10px;
+    background: #dfdfdf;
+}
+.el-card__body{
+    padding: 10px;
+}
+el-botton{
+    color: #fff !important;
+    background-color: #02a145 !important;
+    border-color: #02a145 !important;
+    padding: 10px;
+    cursor: pointer;
+}

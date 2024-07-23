@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\StudentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,18 +14,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::any('/testepage', function(){
+Route::any('/', function(){
     return view('welcome');
 });
 
+Route::any('/example', function(){
+    return view('example');
+});
 
+Route::get('/add-estudante', [StudentController::class, 'create']);
 
 Route::get('/new', [App\Http\Controllers\TestController::class, 'controllerMethod']);
-
-Route::any('/{slug}', function(){
-    return view('welcome');
-});
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
