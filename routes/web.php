@@ -21,10 +21,10 @@ Route::any('/', function(){
 Route::any('/example', function(){
     return view('example');
 });
-
+Route::get('/estudantes', [StudentController::class, 'index']);
 Route::get('/add-estudante', [StudentController::class, 'create']);
-
 Route::post('/save-student', [StudentController::class, 'store']);
+Route::post('/get-students', [StudentController::class, 'fetchStudentData']);
 
 
 Auth::routes();

@@ -60,7 +60,7 @@
         },
         methods: {
             goBack() {
-                window.location.href = "/students"
+                window.location.href = "/estudantes"
             },
             saveForm(formName) {
                 this.$refs[formName].validate( (valid) => {

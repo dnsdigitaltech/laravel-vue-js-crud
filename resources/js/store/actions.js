@@ -15,9 +15,17 @@ function hideLoader(){
     loader.close();
 }
 
+export const getStudents = ({ commit }, payload) => {
+    let url = `/get-students`;
+    axios.post(url, payload)
+        .then( res => {
+            commit('setTableData', res.data);
+    })
+};
+
 export const saveStudent = ({ commit }, payload) => {
     let url = `/save-student`
-    showLoader('Saving Student')
+    showLoader('Criando estudante')
     axios.post(url, payload).then( res => {
         Vue.prototype.$notify({
             title: 'success',

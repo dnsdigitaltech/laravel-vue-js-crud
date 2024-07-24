@@ -12,7 +12,7 @@ export const store = new Vuex.Store({
 
     },
     state: {
-
+        tableData: [],
     },
     mutations,
     actions,
