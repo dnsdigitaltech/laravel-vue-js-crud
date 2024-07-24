@@ -29,8 +29,7 @@ Route::get('/edit-studant/{id}/edit', [StudentController::class, 'edit']);
 Route::get('/fetch-student-showbyid/{id}', [StudentController::class, 'editData']);
 Route::put('/update-student/{id}', [StudentController::class, 'update']);
 Route::get('/ver-estudante/{id}', [StudentController::class, 'showPage']);
-
-
+Route::delete('/delete-student/{id}', [StudentController::class, 'delete']);
 
 
 Auth::routes();

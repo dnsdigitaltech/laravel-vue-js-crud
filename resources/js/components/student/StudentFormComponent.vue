@@ -17,11 +17,11 @@
                         </el-form-item>
 
                         <el-form-item label="Sessão" required prop="section">
-                            <el-input v-model="model.section" readonly="readOnlyFields" placeholder="Nome da sessão"></el-input>
+                            <el-input v-model="model.section" :readonly="readOnlyFields" placeholder="Nome da sessão"></el-input>
                         </el-form-item>
 
                         <el-form-item label="E-mail" required prop="email">
-                            <el-input v-model="model.email" readonly="readOnlyFields" placeholder="E-mail"></el-input>
+                            <el-input v-model="model.email" :readonly="readOnlyFields" placeholder="E-mail"></el-input>
                         </el-form-item>
 
                     </el-row>

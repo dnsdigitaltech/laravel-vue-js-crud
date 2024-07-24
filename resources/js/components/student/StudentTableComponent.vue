@@ -45,7 +45,7 @@
                             <el-button
                             size="mini"
                             type="danger" icon="el-icon-delete"
-                            @click="handleDelete(scope.$index, scope.row)" ></el-button>
+                            @click="deleteData(scope.$index, scope.row)" ></el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -135,6 +135,15 @@ import { mapGetters } from 'vuex';
             },
             editData(index, row) {
                 window.location.href = `/edit-studant/${row.id}/edit`
+            },
+            fetchAllData() {
+                this.$store.dispatch('getStudents')
+            },
+            deleteData(index, row) {
+                if(confirm("Tem certeza? Você deseja excluir esses dados?")){
+                    this.$store.dispatch('deleteStudent', { id:row.id })
+                    this.fetchAllData();
+                }
             }
         }
     }

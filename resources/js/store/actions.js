@@ -50,3 +50,17 @@ export const updateStudent = ({ commit }, payload) => {
         window.location.href = '/estudantes'
     })
 }
+
+export const deleteStudent = ({ commit }, payload) => {
+    let url = `/delete-student/${payload.id}`
+    showLoader('Removendo estudante')
+    axios.delete(url).then( res => {
+        Vue.prototype.$notify({
+            title: 'success',
+            message: res.data.message,
+            type: 'success',
+        });
+        hideLoader()
+        //window.location.href = '/estudantes'
+    })
+}

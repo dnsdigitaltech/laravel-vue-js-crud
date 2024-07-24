@@ -85,4 +85,14 @@ class StudentController extends Controller
         ];
         return view('student.form', $data);
     }
+
+    public function delete($id)
+    {
+        $student = Student::find($id);
+        $student->delete();
+        return response()->json([
+            'status' => 200,
+            'message' => 'Estudante Removido com sucesso!'
+        ]);
+    }
 }
