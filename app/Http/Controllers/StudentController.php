@@ -10,7 +10,7 @@ class StudentController extends Controller
     public function index()
     {
         $data = [
-            'scope' => 'create'
+            'scope' => 'Criar'
         ];
         return view('student.view', $data);
     }
@@ -18,12 +18,12 @@ class StudentController extends Controller
     public function create()
     {
         $data = [
-            'scope' => 'create'
+            'scope' => 'Criar'
         ];
         return view('student.form', $data);
     }
 
-    public function store( Request $request)
+    public function store(Request $request)
     {
         $student = new Student;
         $student->name = $request->name;
@@ -42,5 +42,38 @@ class StudentController extends Controller
     {
         $students = Student::all();
         return $students;
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'scope' => 'Editar',
+            'id' => $id
+        ];
+        return view('student.form', $data);
+    }
+
+    public function editData($id)
+    {
+        $student = Student::find($id);
+
+         return response()->json([
+            'status' => 200,
+            'data' => $student
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $student = Student::find($id);
+        $student->name = $request->name;
+        $student->class = $request->class;
+        $student->section = $request->section;
+        $student->email = $request->email;
+        $student->update();
+        return response()->json([
+            'status' => 200,
+            'message' => 'Estudante atualizado com sucesso!'
+        ]);
     }
 }

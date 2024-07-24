@@ -25,6 +25,11 @@ Route::get('/estudantes', [StudentController::class, 'index']);
 Route::get('/add-estudante', [StudentController::class, 'create']);
 Route::post('/save-student', [StudentController::class, 'store']);
 Route::post('/get-students', [StudentController::class, 'fetchStudentData']);
+Route::get('/edit-studant/{id}/edit', [StudentController::class, 'edit']);
+Route::get('/fetch-student-showbyid/{id}', [StudentController::class, 'editData']);
+Route::put('/update-student/{id}', [StudentController::class, 'update']);
+
+
 
 
 Auth::routes();

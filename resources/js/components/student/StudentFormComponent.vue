@@ -2,7 +2,7 @@
     <div>
         <el-card class="box-card">
             <div slot="header" class="clearfix">
-                <el-page-header @back="goBack" :content="`Categoria - ${scope}`">
+                <el-page-header @back="goBack" :content="`Estudante - ${scope}`">
                 </el-page-header>
             </div>
             <div>
@@ -40,10 +40,21 @@
     export default {
         name: 'student-form-component',
         props: {
-            scope: String
+            scope: String,
+            id: Number
         },
         mounted() {
-            console.log('Component mounted.')
+
+            switch (this.scope){
+                case 'Editar':
+                    axios.get(`/fetch-student-showbyid/${this.id}`).then(res=>{
+                        this.$set(this,'model', res.data.data)
+                    });
+                    break
+                default:
+                    break
+            }
+
         },
         data() {
             return {
@@ -65,7 +76,20 @@
             saveForm(formName) {
                 this.$refs[formName].validate( (valid) => {
                     if(valid){
-                        this.$store.dispatch('saveStudent', this.model)
+                        switch(this.scope) {
+                            case 'Criar':
+                                this.$store.dispatch('saveStudent', this.model)
+                                break
+
+                            case 'Editar':
+                                this.$store.dispatch('updateStudent', {id:this.id, model:this.model})
+                                break
+
+                            default:
+                                break
+
+                        }
+                        
                     }
                 })
             }

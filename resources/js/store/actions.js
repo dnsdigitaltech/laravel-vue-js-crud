@@ -29,7 +29,21 @@ export const saveStudent = ({ commit }, payload) => {
     axios.post(url, payload).then( res => {
         Vue.prototype.$notify({
             title: 'success',
-            message: 'Estudante criado com sucesso',
+            message: res.data.message,
+            type: 'success',
+        });
+        hideLoader()
+        window.location.href = '/estudantes'
+    })
+}
+
+export const updateStudent = ({ commit }, payload) => {
+    let url = `/update-student/${payload.id}`
+    showLoader('Atualizando estudante')
+    axios.put(url, payload.model).then( res => {
+        Vue.prototype.$notify({
+            title: 'success',
+            message: res.data.message,
             type: 'success',
         });
         hideLoader()

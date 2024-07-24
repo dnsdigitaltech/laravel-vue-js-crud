@@ -36,11 +36,12 @@
                         <template slot-scope="scope">
                             <el-button
                             size="mini"
-                            @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
+                            type="success"
+                            @click="editData(scope.$index, scope.row)" class="float-left">Editar</el-button>
                             <el-button
                             size="mini"
                             type="danger"
-                            @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
+                            @click="handleDelete(scope.$index, scope.row)"  class="float-left">Del</el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -124,6 +125,9 @@ import { mapGetters } from 'vuex';
         methods: {
             create() {
                 window.location.href = "/add-estudante"
+            },
+            editData(index, row) {
+                 window.location.href = `/edit-studant/${row.id}/edit`
             }
         }
     }
