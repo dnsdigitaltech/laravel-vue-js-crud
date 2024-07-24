@@ -76,4 +76,13 @@ class StudentController extends Controller
             'message' => 'Estudante atualizado com sucesso!'
         ]);
     }
+
+    public function showPage($id)
+    {
+        $data = [
+            'scope' => 'Ver',
+            'id' => $id
+        ];
+        return view('student.form', $data);
+    }
 }

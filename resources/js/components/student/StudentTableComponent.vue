@@ -26,7 +26,7 @@
                         >
 
                     </el-table-column>      
-                    <el-table-column >             
+                    <el-table-column min-width="110">             
                         <template slot="header" slot-scope="scope">
                             <el-input
                             v-model="searchQuery"
@@ -36,12 +36,16 @@
                         <template slot-scope="scope">
                             <el-button
                             size="mini"
-                            type="success"
-                            @click="editData(scope.$index, scope.row)" class="float-left">Editar</el-button>
+                            type="success" icon="el-icon-edit"
+                            @click="editData(scope.$index, scope.row)"></el-button>
                             <el-button
                             size="mini"
-                            type="danger"
-                            @click="handleDelete(scope.$index, scope.row)"  class="float-left">Del</el-button>
+                            type="info" icon="el-icon-view" 
+                            @click="showData(scope.$index, scope.row)"></el-button>
+                            <el-button
+                            size="mini"
+                            type="danger" icon="el-icon-delete"
+                            @click="handleDelete(scope.$index, scope.row)" ></el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -126,8 +130,11 @@ import { mapGetters } from 'vuex';
             create() {
                 window.location.href = "/add-estudante"
             },
+            showData(index, row) {
+                window.location.href = `/ver-estudante/${row.id}`
+            },
             editData(index, row) {
-                 window.location.href = `/edit-studant/${row.id}/edit`
+                window.location.href = `/edit-studant/${row.id}/edit`
             }
         }
     }
