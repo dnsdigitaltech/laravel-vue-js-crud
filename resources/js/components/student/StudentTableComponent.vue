@@ -66,13 +66,18 @@ import { mapGetters } from 'vuex';
                 background: 'rgba(255,255,255,0,85)'
             });
 
-            this.$store.dispatch('getStudents')
+            this.$store.dispatch('getStudents', { searchQuery: this.searchQuery })
             loading.close()
         },
         computed: {
             ...mapGetters({
                 tableData: "tableData"
             })
+        },
+        watch: {
+            searchQuery: function (val) {
+                this.$store.dispatch('getStudents', { searchQuery: this.searchQuery })
+            }
         },
         data() {
             return {

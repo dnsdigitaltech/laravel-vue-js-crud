@@ -38,9 +38,20 @@ class StudentController extends Controller
         ]);
     }
     
-    public function fetchStudentData()
+    public function fetchStudentData(Request $request)
     {
-        $students = Student::all();
+        //$query = Student::all();
+        $query = Student::select('id', 'name', 'class', 'section', 'email');
+        if($request->searchQuery){
+            $query->where(function($q) use($request){
+                $q->orWhere('id', 'like', '%'.$request->searchQuery.'%' );
+                $q->orWhere('name', 'like', '%'.$request->searchQuery.'%' );
+                $q->orWhere('class', 'like', '%'.$request->searchQuery.'%' );
+                $q->orWhere('section', 'like', '%'.$request->searchQuery.'%' );
+                $q->orWhere('email', 'like', '%'.$request->searchQuery.'%' );
+            });
+        }
+        $students = $query->get();
         return $students;
     }
 
