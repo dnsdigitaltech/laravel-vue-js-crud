@@ -15,7 +15,7 @@ window.Vue = require('vue').default;
 
 Vue.use(ElementUI);
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('qr-code-index', require('./components/qrCodeIndex.vue').default);
 Vue.component('student-form-component', require('./components/student/StudentFormComponent.vue').default);
 Vue.component('student-table-component', require('./components/student/StudentTableComponent.vue').default);
 

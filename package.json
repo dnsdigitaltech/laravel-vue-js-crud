@@ -33,6 +33,7 @@
         "postcss-preset-env": "^7.2.3",
         "postcss-rtl": "^2.0.0",
         "postcss-rtlcss": "^3.1",
+        "qrcode.vue": "^1.7.0",
         "vue": "^2.6.11"
     }
 }

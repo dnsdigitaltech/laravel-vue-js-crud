@@ -43,6 +43,9 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/estudantes">Estudantes</a>
+                        </li>
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
