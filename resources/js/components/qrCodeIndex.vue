@@ -5,6 +5,12 @@
         <qrcode-vue :value="QrValue" :size="size" level="H" />
         <form>
             <input type="text" v-model="QrValue">
+            <input 
+                v-on:focus="$event.target.select()" 
+                ref="myinput" 
+                readonly 
+                :value="QrValue"/>
+            <button @click="copy">Copy</button>
         </form>
     </div>
 </template>
@@ -21,7 +27,19 @@
       return {
         QrValue: null,
         size: 300,
+        text: 'This will get copied!'
       }
+    },
+    methods: {
+        copy() {
+            this.$refs.myinput.focus();
+            let copySuccess = document.execCommand('copy');
+            if(copySuccess){
+                alert('Copiado com sucesso')
+            }else{
+                alert('copie novamente')
+            }
+        }
     },
     components: {
       QrcodeVue,
