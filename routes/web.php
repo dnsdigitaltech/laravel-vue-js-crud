@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\StudentController;
-
+use App\Http\Controllers\ConsultaVeiculoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +17,7 @@ use App\Http\Controllers\StudentController;
 Route::any('/', function(){
     return view('welcome');
 });
-
+Route::get('/consultar-veiculo/{placa}', [ConsultaVeiculoController::class,'consultarVeiculo']);
 Route::any('/example', function(){
     return view('example');
 });
